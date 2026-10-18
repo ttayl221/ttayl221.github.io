@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evolution of HTTP | HTTP Explained</title>
+  <meta name="description" content="How HTTP evolved from HTTP/0.9 in 1991 to HTTP/3 and QUIC, and why each version was created.">
+  <!-- Shared by every page -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- ===== HEADER and Menu ===== -->
+  <header id="site-header">
+    <div class="header-inner">
+      <p class="site-title">HTTP Explained</p>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="how-http-works.html">How HTTP Works</a></li>
+          <li><a href="methods-status-codes.html">Methods &amp; Status Codes</a></li>
+          <li><a href="security-cookies.html">Security &amp; Cookies</a></li>
+          <li><a href="evolution.html" class="current">Evolution</a></li>
+          <li><a href="key-concepts.html">Key Concepts</a></li>
+          <li><a href="references.html">References</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <!-- CSS GRID -->
+    <div class="page-grid">
+      <aside class="sidebar">
+        <h2>On this page</h2>
+        <ul>
+          <li><a href="#timeline">HTTP/0.9 to 1.1</a></li>
+          <li><a href="#http2">HTTP/2</a></li>
+          <li><a href="#hol">Head-of-line blocking</a></li>
+          <li><a href="#http3">HTTP/3 and QUIC</a></li>
+          <li><a href="#mobile">Mobile benefits</a></li>
+        </ul>
+      </aside>
+      <main>
+        <h1>Evolution of HTTP</h1>
+        <p>HTTP has been revised several times to make the web faster and more reliable.</p>
+
+        <h2 id="timeline">From HTTP/0.9 to HTTP/1.1</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>HTTP/0.9 (1991)</h3>
+            <p>Designed by Tim Berners-Lee. Simple GET requests for raw HTML text; the connection closed right after.</p>
+          </article>
+          <article class="card">
+            <h3>HTTP/1.0 (1996)</h3>
+            <p>Added headers, status codes and media (MIME) types so the web could carry graphics and rich files.</p>
+          </article>
+          <article class="card">
+            <h3>HTTP/1.1 (1997)</h3>
+            <p>Introduced keep-alive persistent TCP connections to cut network delay and server overhead.</p>
+          </article>
+        </div>
+
+        <h2 id="http2">HTTP/2 (2015)</h2>
+        <ul>
+          <li><strong>Binary framing layer:</strong> replaced plain text with binary streams.</li>
+          <li><strong>Multiplexing:</strong> sends many requests at once over a single TCP connection.</li>
+          <li><strong>Header compression (HPACK)</strong> and a server push feature.</li>
+        </ul>
+        <h3 id="hol">The head-of-line blocking problem</h3>
+        <p>HTTP/2 still runs on TCP, which delivers packets in strict order. If one packet is lost on weak
+          Wi-Fi, <em>all</em> streams stop and wait for the resend, like a traffic jam behind one stalled car.</p>
+
+        <h2 id="http3">HTTP/3 and QUIC</h2>
+        <p>HTTP/3 replaces TCP with <strong>QUIC</strong>, which runs over UDP.</p>
+        <ul>
+          <li><strong>Independent streams:</strong> a lost packet in one stream does not stall the others.</li>
+          <li><strong>TLS 1.3 required:</strong> security is built in, and unencrypted HTTP/3 does not exist.</li>
+          <li><strong>0-RTT handshakes:</strong> reconnecting needs no extra round trip, saving roughly 100&ndash;300 ms.</li>
+          <li><strong>Connection migration:</strong> connection IDs let a download continue when you switch from Wi-Fi to cellular.</li>
+        </ul>
+
+        <h2 id="mobile">Why HTTP/3 matters on mobile</h2>
+        <ul>
+          <li>Faster page loads when the signal is weak.</li>
+          <li>Video and audio keep buffering without freezing.</li>
+          <li>Apps that make dozens of short API calls refresh faster.</li>
+          <li>Adoption is growing: one 2026 analysis (reference 7) reports that over 30% of top websites,
+            including Google, Meta, Cloudflare and Netflix, use it.</li>
+        </ul>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Table 7. HTTP versions at a glance</caption>
+            <thead><tr><th>Version</th><th>Year</th><th>Transport</th><th>Key idea</th></tr></thead>
+            <tbody>
+              <tr><th>HTTP/0.9</th><td>1991</td><td>TCP</td><td>One-line GET, raw HTML</td></tr>
+              <tr><th>HTTP/1.0</th><td>1996</td><td>TCP</td><td>Headers, status codes, MIME types</td></tr>
+              <tr><th>HTTP/1.1</th><td>1997</td><td>TCP</td><td>Persistent connections</td></tr>
+              <tr><th>HTTP/2</th><td>2015</td><td>TCP</td><td>Binary frames, multiplexing</td></tr>
+              <tr><th>HTTP/3</th><td>2022</td><td>QUIC over UDP</td><td>Independent streams, built-in TLS 1.3</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <nav class="pager">
+          <a href="security-cookies.html">&larr; Security &amp; Cookies</a>
+          <a href="key-concepts.html">Key Concepts &rarr;</a>
+        </nav>
+      </main>
+    </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>This website is a class project for
+      <a href="https://ksuweb.github.io/IT3203/">IT 3203 (Kennesaw State University)</a>.</p>
+    <p>Created by Tajmah Taylor</p>
+  </footer>
+</body>
+</html>

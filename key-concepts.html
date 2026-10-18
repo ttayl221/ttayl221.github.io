@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Key Concepts | HTTP Explained</title>
+  <meta name="description" content="Seven key concepts for understanding HTTP: the protocol, client-server model, messages, methods, status codes, statelessness and HTTPS.">
+  <!-- Shared by every page -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- ===== HEADER and Menu ===== -->
+  <header id="site-header">
+    <div class="header-inner">
+      <p class="site-title">HTTP Explained</p>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="how-http-works.html">How HTTP Works</a></li>
+          <li><a href="methods-status-codes.html">Methods &amp; Status Codes</a></li>
+          <li><a href="security-cookies.html">Security &amp; Cookies</a></li>
+          <li><a href="evolution.html">Evolution</a></li>
+          <li><a href="key-concepts.html" class="current">Key Concepts</a></li>
+          <li><a href="references.html">References</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <!-- CSS GRID -->
+    <div class="page-grid">
+      <aside class="sidebar">
+        <h2>On this page</h2>
+        <ul>
+          <li><a href="#c1">1. HTTP</a></li>
+          <li><a href="#c2">2. Client-server</a></li>
+          <li><a href="#c3">3. Requests / responses</a></li>
+          <li><a href="#c4">4. Methods</a></li>
+          <li><a href="#c5">5. Status codes</a></li>
+          <li><a href="#c6">6. Cookies</a></li>
+          <li><a href="#c7">7. HTTPS</a></li>
+        </ul>
+      </aside>
+      <main>
+        <h1>Key Concepts</h1>
+        <p>Seven ideas that make the rest of HTTP easier to understand.</p>
+        <dl class="concepts">
+          <dt id="c1">1. HTTP (HyperText Transfer Protocol)</dt>
+          <dd>The agreed set of rules browsers and servers use to exchange web content. It defines how messages are
+            formatted and sent. <a href="how-http-works.html">See How HTTP Works.</a></dd>
+
+          <dt id="c2">2. The client-server model</dt>
+          <dd>The client (your browser) starts the conversation by asking for data. The server stores the data and
+            answers. In our analogy: customer and kitchen. <a href="how-http-works.html#client-server">Learn more.</a></dd>
+
+          <dt id="c3">3. Requests and responses</dt>
+          <dd>Every exchange is a request followed by a response. Each message has a start line, headers and an
+            optional body. <a href="how-http-works.html#request">Learn more.</a></dd>
+
+          <dt id="c4">4. HTTP methods</dt>
+          <dd>The verb in a request: GET reads, POST creates, PUT replaces, DELETE removes, and the new QUERY searches
+            with a body. Two vocabulary words matter: <em>safe</em> (changes nothing) and <em>idempotent</em> (repeating
+            has the same effect). <a href="methods-status-codes.html#methods">Learn more.</a></dd>
+
+          <dt id="c5">5. Status codes</dt>
+          <dd>A three-digit number that reports the outcome. The first digit gives the family: 2xx success, 3xx
+            redirect, 4xx client error, 5xx server error. <a href="methods-status-codes.html#status-families">Learn more.</a></dd>
+
+          <dt id="c6">6. Statelessness and cookies</dt>
+          <dd>HTTP forgets every request as soon as it is answered. Cookies stored by the browser and sent back with
+            each request let sites remember logins and carts. <a href="security-cookies.html#stateless">Learn more.</a></dd>
+
+          <dt id="c7">7. HTTPS, TLS and encryption</dt>
+          <dd>HTTPS wraps HTTP in TLS so data is encrypted, tamper-proof and sent to a verified server. Plain HTTP
+            sends everything as readable text. <a href="security-cookies.html#https">Learn more.</a></dd>
+        </dl>
+
+        <div class="callout">
+          <strong>Also worth knowing:</strong> QUIC, the UDP-based transport behind HTTP/3, is covered on the
+          <a href="evolution.html#http3">Evolution</a> page.
+        </div>
+        <nav class="pager">
+          <a href="evolution.html">&larr; Evolution</a>
+          <a href="references.html">References &rarr;</a>
+        </nav>
+      </main>
+    </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>This website is a class project for
+      <a href="https://ksuweb.github.io/IT3203/">IT 3203 (Kennesaw State University)</a>.</p>
+    <p>Created by Tajmah Taylor</p>
+  </footer>
+</body>
+</html>

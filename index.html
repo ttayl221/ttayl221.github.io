@@ -1,9 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Hello!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home | HTTP Explained</title>
+  <meta name="description" content="An introduction to HTTP, the HyperText Transfer Protocol: how browsers and servers talk, what methods and status codes mean, and how the protocol has evolved.">
+  <!-- Shared by every page -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  Welcome to my page.
+  <!-- ===== HEADER ===== -->
+  <header id="site-header">
+    <div class="header-inner">
+      <p class="site-title">HTTP Explained</p>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="current">Home</a></li>
+          <li><a href="how-http-works.html">How HTTP Works</a></li>
+          <li><a href="methods-status-codes.html">Methods &amp; Status Codes</a></li>
+          <li><a href="security-cookies.html">Security &amp; Cookies</a></li>
+          <li><a href="evolution.html">Evolution</a></li>
+          <li><a href="key-concepts.html">Key Concepts</a></li>
+          <li><a href="references.html">References</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1>HTTP: The Web's Rulebook</h1>
+        <p class="byline">Research by Tajmah Taylor</p>
+        <p><strong>Abstract.</strong> Every time you open a web page, stream a video or
+          use an app, your device and a distant server follow a shared set of rules called
+          HTTP (HyperText Transfer Protocol). This site explains those rules in plain language,
+          using a restaurant analogy: how a request is made, what the server's reply means, why
+          plain HTTP is not safe, and how the protocol grew from HTTP/0.9 in 1991 to HTTP/3 today.</p>
+      </section>
+
+      <!-- KEY TERMS -->
+      <section>
+        <h2>Key terms</h2>
+        <ul class="term-list">
+          <li>HTTP</li>
+          <li>Client</li>
+          <li>Server</li>
+          <li>Request</li>
+          <li>Response</li>
+          <li>Method</li>
+          <li>Status code</li>
+          <li>Header</li>
+          <li>Cookie</li>
+          <li>HTTPS / TLS</li>
+          <li>QUIC</li>
+        </ul>
+        <p>These terms are defined on the <a href="key-concepts.html">Key Concepts</a> page.</p>
+      </section>
+
+      <!-- TABLE OF CONTENTS -->
+      <section>
+        <h2>Table of contents</h2>
+        <ol class="toc">
+          <li><a href="how-http-works.html">How HTTP Works</a>
+            <span class="toc-desc">Clients, servers, the restaurant analogy, the life cycle of a page visit, and the anatomy of requests and responses.</span></li>
+          <li><a href="methods-status-codes.html">Methods &amp; Status Codes</a>
+            <span class="toc-desc">GET, POST, PUT, DELETE, the brand-new QUERY method, and what 200, 404 and 500 really mean.</span></li>
+          <li><a href="security-cookies.html">Security &amp; Cookies</a>
+            <span class="toc-desc">Why HTTP is stateless, how cookies fix that, and how HTTPS protects your data.</span></li>
+          <li><a href="evolution.html">Evolution of HTTP</a>
+            <span class="toc-desc">From HTTP/0.9 to HTTP/3 and the QUIC protocol.</span></li>
+          <li><a href="key-concepts.html">Key Concepts</a>
+            <span class="toc-desc">Seven ideas you need to understand HTTP.</span></li>
+          <li><a href="references.html">References &amp; Resources</a>
+            <span class="toc-desc">Sources used in this research and good places to keep learning.</span></li>
+          <li><a href="about.html">About</a>
+            <span class="toc-desc">About me and about this project.</span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Why study HTTP?</h2>
+        <blockquote>Without HTTP, your browser wouldn't know how to request a web page, and web
+          servers wouldn't know how to deliver HTML, images, or video to your screen.</blockquote>
+        <p>HTTP sits underneath nearly everything a web developer builds, so understanding it
+          makes HTML, CSS, JavaScript and debugging much easier to reason about.</p>
+      </section>
+    </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>This website is a class project for
+      <a href="https://ksuweb.github.io/IT3203/">IT 3203 (Kennesaw State University)</a>.</p>
+    <p>Created by Tajmah Taylor</p>
+  </footer>
 </body>
 </html>

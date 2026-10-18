@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Methods and Status Codes | HTTP Explained</title>
+  <meta name="description" content="HTTP methods (GET, POST, PUT, DELETE, QUERY) and the five families of HTTP status codes, explained with a diner analogy.">
+  <!-- Shared by every page -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- ===== HEADER and Menu ===== -->
+  <header id="site-header">
+    <div class="header-inner">
+      <p class="site-title">HTTP Explained</p>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="how-http-works.html">How HTTP Works</a></li>
+          <li><a href="methods-status-codes.html" class="current">Methods &amp; Status Codes</a></li>
+          <li><a href="security-cookies.html">Security &amp; Cookies</a></li>
+          <li><a href="evolution.html">Evolution</a></li>
+          <li><a href="key-concepts.html">Key Concepts</a></li>
+          <li><a href="references.html">References</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <!-- CSS GRID -->
+    <div class="page-grid">
+      <aside class="sidebar">
+        <h2>On this page</h2>
+        <ul>
+          <li><a href="#methods">HTTP methods</a></li>
+          <li><a href="#query">The QUERY method</a></li>
+          <li><a href="#status-families">Status code families</a></li>
+          <li><a href="#diner">Status codes at the diner</a></li>
+        </ul>
+      </aside>
+      <main>
+        <h1>Methods &amp; Status Codes</h1>
+        <p>Every request names an action (the <em>method</em>) and every response reports an
+          outcome (the <em>status code</em>).</p>
+
+        <h2 id="methods">HTTP methods</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>GET: fetch data</h3>
+            <ul>
+              <li>Retrieves or reads data from a server.</li>
+              <li><strong>Safe and idempotent:</strong> does not change server state.</li>
+              <li>Parameters are added to the URL.</li>
+              <li>Can be cached and bookmarked.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>POST: send or create data</h3>
+            <ul>
+              <li>Submits new data to be processed.</li>
+              <li><strong>Changes state:</strong> creates new records.</li>
+              <li>Data travels in the request body, not the URL.</li>
+              <li>Not safe to resend automatically without asking the user.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>PUT: update or replace</h3>
+            <ul>
+              <li>Replaces an existing resource completely.</li>
+              <li><strong>Idempotent:</strong> repeating it gives the same result.</li>
+              <li>Example: editing a profile or a document.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>DELETE: remove</h3>
+            <ul>
+              <li>Asks the server to remove a resource.</li>
+              <li><strong>Idempotent:</strong> once it is gone, repeating the call has the same outcome.</li>
+              <li>Example: removing a photo, comment or account.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Table 3. Method comparison</caption>
+            <thead>
+              <tr><th>Method</th><th>Purpose</th><th>Safe?</th><th>Idempotent?</th><th>Request body?</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>GET</th><td>Read data</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+              <tr><th>POST</th><td>Create / process data</td><td>No</td><td>No</td><td>Yes</td></tr>
+              <tr><th>PUT</th><td>Replace a resource</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+              <tr><th>DELETE</th><td>Remove a resource</td><td>No</td><td>Yes</td><td>Usually no</td></tr>
+              <tr><th>QUERY</th><td>Search with a body</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Safe means the request does not change anything on the server.
+          Idempotent means sending it many times has the same effect as sending it once.</p>
+
+        <h2 id="query">The new QUERY method (RFC 10008)</h2>
+        <p>In June 2026 the IETF published
+          <a href="https://www.rfc-editor.org/info/rfc10008">RFC 10008</a>, which defines the
+          <code>QUERY</code> method. It is the first new standard HTTP method since
+          <code>PATCH</code> in 2010.</p>
+        <ul>
+          <li><strong>The problem:</strong> <code>GET</code> cannot carry a body and URLs have length limits,
+            while <code>POST</code> carries a body but implies the server's state may change, so it cannot be
+            safely cached or retried.</li>
+          <li><strong>The solution:</strong> <code>QUERY</code> combines GET's meaning (safe, idempotent,
+            cacheable) with POST's ability to carry a body such as JSON.</li>
+          <li><strong>Use cases:</strong> complex database searches, AI / RAG vector queries, GraphQL queries and
+            large multi-parameter filters.</li>
+        </ul>
+<pre><code>QUERY /products HTTP/1.1
+Host: example.com
+Content-Type: application/json
+
+{"category": "laptops", "maxPrice": 900, "inStock": true}
+</code></pre>
+        <div class="callout">
+          <strong>Note:</strong> Headlines call this the first new method "in 20 years" or "in 16 years"
+          depending on which method they count from. Either way, it is rare.
+        </div>
+
+        <h2 id="status-families">Status code families</h2>
+        <div class="table-wrap">
+          <table>
+            <caption>Table 4. The five status code families</caption>
+            <thead><tr><th>Range</th><th>Name</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><th>1xx</th><td>Informational</td><td>Request received; the process is continuing.</td></tr>
+              <tr><th class="s2xx">2xx</th><td>Success</td><td>The action was received, understood and accepted.</td></tr>
+              <tr><th class="s3xx">3xx</th><td>Redirection</td><td>Further action is needed; the resource has moved.</td></tr>
+              <tr><th class="s4xx">4xx</th><td>Client error</td><td>The request has bad syntax or the item is missing.</td></tr>
+              <tr><th class="s5xx">5xx</th><td>Server error</td><td>The server failed to fulfil a valid request.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="diner">Status codes at the diner</h2>
+        <div class="table-wrap">
+          <table>
+            <caption>Table 5. Common status codes translated to a restaurant</caption>
+            <thead><tr><th>Code</th><th>Diner scene</th><th>What happened</th></tr></thead>
+            <tbody>
+              <tr><td class="s2xx">200 OK</td><td>Smooth meal delivery</td><td>The food arrives as ordered. Everything is fine.</td></tr>
+              <tr><td class="s2xx">202 Accepted</td><td>Kitchen processing</td><td>The order was taken, but the kitchen needs more time.</td></tr>
+              <tr><td class="s4xx">404 Not Found</td><td>Out of stock</td><td>The item is not on the menu or is unavailable.</td></tr>
+              <tr><td class="s5xx">500 Internal Server Error</td><td>Kitchen emergency</td><td>The chef is sick or the appliances broke: the server has a problem.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <nav class="pager">
+          <a href="how-http-works.html">&larr; How HTTP Works</a>
+          <a href="security-cookies.html">Security &amp; Cookies &rarr;</a>
+        </nav>
+      </main>
+    </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>This website is a class project for
+      <a href="https://ksuweb.github.io/IT3203/">IT 3203 (Kennesaw State University)</a>.</p>
+    <p>Created by Tajmah Taylor</p>
+  </footer>
+</body>
+</html>

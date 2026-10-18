@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Security and Cookies | HTTP Explained</title>
+  <meta name="description" content="Why HTTP is stateless, how cookies keep you logged in, why plain HTTP is unsafe, and how HTTPS and TLS protect data.">
+  <!-- Shared by every page -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- ===== HEADER and Menu ===== -->
+  <header id="site-header">
+    <div class="header-inner">
+      <p class="site-title">HTTP Explained</p>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="how-http-works.html">How HTTP Works</a></li>
+          <li><a href="methods-status-codes.html">Methods &amp; Status Codes</a></li>
+          <li><a href="security-cookies.html" class="current">Security &amp; Cookies</a></li>
+          <li><a href="evolution.html">Evolution</a></li>
+          <li><a href="key-concepts.html">Key Concepts</a></li>
+          <li><a href="references.html">References</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <!-- CSS GRID -->
+    <div class="page-grid">
+      <aside class="sidebar">
+        <h2>On this page</h2>
+        <ul>
+          <li><a href="#stateless">Statelessness</a></li>
+          <li><a href="#cookies">Cookies</a></li>
+          <li><a href="#plain-http">Is HTTP safe?</a></li>
+          <li><a href="#https">HTTPS and TLS</a></li>
+        </ul>
+      </aside>
+      <main>
+        <h1>Security &amp; Cookies</h1>
+
+        <h2 id="stateless">HTTP is stateless</h2>
+        <ul>
+          <li>Each HTTP transaction is completely independent.</li>
+          <li>By default the server does not remember who you are between requests.</li>
+          <li>This keeps servers from being overloaded, but it would break logins and shopping carts.</li>
+        </ul>
+
+        <h2 id="cookies">The solution: cookies</h2>
+        <p>A cookie is a small piece of text the server sends in a <code>Set-Cookie</code> header. The
+          browser stores it and attaches it to future requests, like a loyalty card at a diner.</p>
+<pre><code>HTTP/1.1 200 OK
+Set-Cookie: session_id=abc123; Secure; HttpOnly
+
+GET /account HTTP/1.1
+Cookie: session_id=abc123
+</code></pre>
+
+        <h2 id="plain-http">Is plain HTTP safe?</h2>
+        <p>No. Unencrypted HTTP has three big weaknesses:</p>
+        <ul>
+          <li><strong>Plaintext transmission:</strong> data travels as readable text over port 80.</li>
+          <li><strong>Eavesdropping and packet sniffing:</strong> anyone on public Wi-Fi can capture passwords, searches or messages.</li>
+          <li><strong>Man-in-the-middle (MITM) attacks:</strong> an attacker can change a page or inject malicious code before it reaches you.</li>
+        </ul>
+
+        <h2 id="https">HTTPS and TLS/SSL</h2>
+        <p>HTTPS is HTTP running inside a TLS/SSL secure connection, normally over port 443. Think of it as a
+          locked delivery box.</p>
+        <ul>
+          <li><strong>Encryption:</strong> turns data into unreadable ciphertext while it travels.</li>
+          <li><strong>Data integrity:</strong> shows that files were not tampered with.</li>
+          <li><strong>Authentication:</strong> digital certificates verify that the server is genuine.</li>
+        </ul>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Table 6. HTTP vs. HTTPS side by side</caption>
+            <thead><tr><th>Feature</th><th>Plain HTTP</th><th>Secure HTTPS</th></tr></thead>
+            <tbody>
+              <tr><th>Security level</th><td>Plaintext (unencrypted)</td><td>Encrypted with TLS / SSL</td></tr>
+              <tr><th>Default port</th><td>80</td><td>443</td></tr>
+              <tr><th>Browser indicator</th><td>Flagged "Not Secure"</td><td>Padlock icon in the address bar</td></tr>
+              <tr><th>Data protection</th><td>Vulnerable to sniffing and MITM</td><td>Protected from tampering and theft</td></tr>
+              <tr><th>Primary use</th><td>Public, non-sensitive blogs</td><td>Logins, e-commerce, banking, APIs</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <strong>Takeaway:</strong> Use HTTPS for anything you publish. This very site is served over
+          HTTPS by GitHub Pages.
+        </div>
+        <nav class="pager">
+          <a href="methods-status-codes.html">&larr; Methods &amp; Status Codes</a>
+          <a href="evolution.html">Evolution &rarr;</a>
+        </nav>
+      </main>
+    </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>This website is a class project for
+      <a href="https://ksuweb.github.io/IT3203/">IT 3203 (Kennesaw State University)</a>.</p>
+    <p>Created by Tajmah Taylor</p>
+  </footer>
+</body>
+</html>

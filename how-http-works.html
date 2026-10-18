@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How HTTP Works | HTTP Explained</title>
+  <meta name="description" content="The client-server model, a restaurant analogy, the life cycle of a page visit, and the structure of HTTP requests and responses.">
+  <!-- Shared by every page -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- ===== HEADER and Menu ===== -->
+  <header id="site-header">
+    <div class="header-inner">
+      <p class="site-title">HTTP Explained</p>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="how-http-works.html" class="current">How HTTP Works</a></li>
+          <li><a href="methods-status-codes.html">Methods &amp; Status Codes</a></li>
+          <li><a href="security-cookies.html">Security &amp; Cookies</a></li>
+          <li><a href="evolution.html">Evolution</a></li>
+          <li><a href="key-concepts.html">Key Concepts</a></li>
+          <li><a href="references.html">References</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <!-- CSS GRID -->
+    <div class="page-grid">
+      <aside class="sidebar">
+        <h2>On this page</h2>
+        <ul>
+          <li><a href="#client-server">Client-server model</a></li>
+          <li><a href="#analogy">Restaurant analogy</a></li>
+          <li><a href="#lifecycle">Page visit life cycle</a></li>
+          <li><a href="#request">Anatomy of a request</a></li>
+          <li><a href="#response">Anatomy of a response</a></li>
+          <li><a href="#mime">MIME types</a></li>
+        </ul>
+      </aside>
+      <main>
+        <h1>How HTTP Works</h1>
+        <p>HTTP is the universal set of communication rules used by web browsers and servers.
+          It dictates how messages are formatted and sent across the internet, and it powers every
+          website visit, video stream and app data exchange.</p>
+
+        <h2 id="client-server">The client-server model</h2>
+        <figure>
+          <img src="images/client-server.svg" width="800" height="260"
+               alt="Diagram: a browser (client) on the left sends an HTTP request arrow to a web server on the right, and the server sends an HTTP response arrow back.">
+          <figcaption>Figure 1. The client starts the conversation; the server answers.</figcaption>
+        </figure>
+        <div class="card-grid">
+          <article class="card">
+            <h3>1. The client (web browser)</h3>
+            <ul>
+              <li>Your device: laptop, phone or tablet.</li>
+              <li>Runs apps such as Chrome, Safari or a mobile app.</li>
+              <li>Starts the conversation by requesting data.</li>
+              <li>Renders the code it receives into a visual website.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>2. The server (web host)</h3>
+            <ul>
+              <li>A remote computer in a data center running 24/7.</li>
+              <li>Stores site files, databases and media.</li>
+              <li>Listens for incoming client requests.</li>
+              <li>Processes each request and returns the data.</li>
+            </ul>
+          </article>
+        </div>
+
+        <h2 id="analogy">The restaurant analogy</h2>
+        <p>A restaurant is an easy way to remember who does what.</p>
+        <div class="table-wrap">
+          <table>
+            <caption>Table 1. Who's who in the restaurant analogy</caption>
+            <thead>
+              <tr><th>Restaurant role</th><th>Web role</th><th>What it does</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>The customer</th><td>Client / browser</td><td>Sits at the table, looks at the menu and decides what data to request.</td></tr>
+              <tr><th>The waiter</th><td>HTTP protocol / API</td><td>Carries your order ticket to the kitchen and brings the food back.</td></tr>
+              <tr><th>The kitchen</th><td>Web server</td><td>Cooks the meal, handles database queries and prepares the website assets.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="lifecycle">Life cycle of a web page visit</h2>
+        <figure>
+          <img src="images/lifecycle.svg" width="900" height="190"
+               alt="Flow diagram of five steps: 1 URL entry, 2 DNS lookup, 3 HTTP request, 4 server work, 5 rendering.">
+          <figcaption>Figure 2. From typing an address to seeing a page.</figcaption>
+        </figure>
+        <ol class="step-list">
+          <li><strong>URL entry.</strong> The user types a web address into the browser.</li>
+          <li><strong>DNS lookup.</strong> The browser converts the domain name into an IP address.</li>
+          <li><strong>HTTP request.</strong> The browser sends the "order ticket" to the server.</li>
+          <li><strong>Server work.</strong> The server fetches files and prepares the data.</li>
+          <li><strong>Rendering.</strong> The browser draws the HTML and CSS on screen.</li>
+        </ol>
+
+        <h2 id="request">Anatomy of an HTTP request</h2>
+        <p>A request has up to three parts: a request line, headers and an optional body.</p>
+<pre><code>GET /index.html HTTP/1.1
+Host: example.com
+User-Agent: Mozilla/5.0
+Accept: text/html
+</code></pre>
+        <ul>
+          <li><strong>Request line:</strong> the HTTP method (action), the target path (resource) and the protocol version.</li>
+          <li><strong>Request headers:</strong> metadata about the client, its language preferences and the content formats it accepts.</li>
+          <li><strong>Request body (optional):</strong> data sent to the server, such as a form submission or JSON like <code>{"username": "student123"}</code>.</li>
+        </ul>
+
+        <h2 id="response">Anatomy of an HTTP response</h2>
+<pre><code>HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 3482
+
+&lt;html&gt;&lt;body&gt;&lt;h1&gt;Welcome!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+        <ul>
+          <li><strong>Status line:</strong> protocol version, numeric status code and a short reason phrase.</li>
+          <li><strong>Response headers:</strong> content format, file size, caching rules and cookie instructions.</li>
+          <li><strong>Response body:</strong> the payload itself: an HTML document, a JPEG photo or API data.</li>
+        </ul>
+
+        <h2 id="mime">Content types (MIME types)</h2>
+        <p>The <code>Content-Type</code> header tells the browser how to treat the bytes it just received.</p>
+        <div class="table-wrap">
+          <table>
+            <caption>Table 2. Common MIME types</caption>
+            <thead><tr><th>MIME type</th><th>Used for</th></tr></thead>
+            <tbody>
+              <tr><td><code>text/html</code></td><td>Web page structure and text markup</td></tr>
+              <tr><td><code>text/css</code></td><td>Visual styling, layout, fonts and colors</td></tr>
+              <tr><td><code>application/javascript</code></td><td>Interactive client-side code</td></tr>
+              <tr><td><code>image/png</code>, <code>image/jpeg</code></td><td>Graphics and photos</td></tr>
+              <tr><td><code>application/json</code></td><td>Structured data exchanged with web APIs</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <nav class="pager">
+          <a href="index.html">&larr; Home</a>
+          <a href="methods-status-codes.html">Methods &amp; Status Codes &rarr;</a>
+        </nav>
+      </main>
+    </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>This website is a class project for
+      <a href="https://ksuweb.github.io/IT3203/">IT 3203 (Kennesaw State University)</a>.</p>
+    <p>Created by Tajmah Taylor</p>
+  </footer>
+</body>
+</html>
