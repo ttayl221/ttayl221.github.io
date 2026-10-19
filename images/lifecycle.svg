@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 190" role="img" aria-labelledby="t d">
+  <title id="t">Life cycle of a web page visit</title>
+  <desc id="d">Five steps in order: URL entry, DNS lookup, HTTP request, server work, rendering.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#500724"/>
+    </marker>
+  </defs>
+  <g font-family="Trebuchet MS, Arial, sans-serif" text-anchor="middle">
+    <g>
+      <rect x="10" y="40" width="150" height="110" rx="12" fill="#ffe3ea" stroke="#be185d" stroke-width="2"/>
+      <circle cx="85" cy="40" r="16" fill="#be185d"/><text x="85" y="46" font-size="16" font-weight="bold" fill="#fff">1</text>
+      <text x="85" y="86" font-size="16" font-weight="bold" fill="#500724">URL Entry</text>
+      <text x="85" y="108" font-size="12" fill="#5b2c3f">You type an</text>
+      <text x="85" y="124" font-size="12" fill="#5b2c3f">address</text>
+    </g>
+    <g>
+      <rect x="187" y="40" width="150" height="110" rx="12" fill="#ffe3ea" stroke="#be185d" stroke-width="2"/>
+      <circle cx="262" cy="40" r="16" fill="#be185d"/><text x="262" y="46" font-size="16" font-weight="bold" fill="#fff">2</text>
+      <text x="262" y="86" font-size="16" font-weight="bold" fill="#500724">DNS Lookup</text>
+      <text x="262" y="108" font-size="12" fill="#5b2c3f">Domain name</text>
+      <text x="262" y="124" font-size="12" fill="#5b2c3f">becomes an IP</text>
+    </g>
+    <g>
+      <rect x="364" y="40" width="150" height="110" rx="12" fill="#ffe3ea" stroke="#be185d" stroke-width="2"/>
+      <circle cx="439" cy="40" r="16" fill="#be185d"/><text x="439" y="46" font-size="16" font-weight="bold" fill="#fff">3</text>
+      <text x="439" y="86" font-size="16" font-weight="bold" fill="#500724">HTTP Request</text>
+      <text x="439" y="108" font-size="12" fill="#5b2c3f">Browser sends</text>
+      <text x="439" y="124" font-size="12" fill="#5b2c3f">the order ticket</text>
+    </g>
+    <g>
+      <rect x="541" y="40" width="150" height="110" rx="12" fill="#ffe3ea" stroke="#be185d" stroke-width="2"/>
+      <circle cx="616" cy="40" r="16" fill="#be185d"/><text x="616" y="46" font-size="16" font-weight="bold" fill="#fff">4</text>
+      <text x="616" y="86" font-size="16" font-weight="bold" fill="#500724">Server Work</text>
+      <text x="616" y="108" font-size="12" fill="#5b2c3f">Server finds files</text>
+      <text x="616" y="124" font-size="12" fill="#5b2c3f">and replies</text>
+    </g>
+    <g>
+      <rect x="718" y="40" width="150" height="110" rx="12" fill="#ffe3ea" stroke="#be185d" stroke-width="2"/>
+      <circle cx="793" cy="40" r="16" fill="#be185d"/><text x="793" y="46" font-size="16" font-weight="bold" fill="#fff">5</text>
+      <text x="793" y="86" font-size="16" font-weight="bold" fill="#500724">Rendering</text>
+      <text x="793" y="108" font-size="12" fill="#5b2c3f">Browser draws</text>
+      <text x="793" y="124" font-size="12" fill="#5b2c3f">HTML and CSS</text>
+    </g>
+  </g>
+  <g stroke="#500724" stroke-width="2.5" marker-end="url(#arrow)">
+    <line x1="162" y1="95" x2="185" y2="95"/>
+    <line x1="339" y1="95" x2="362" y2="95"/>
+    <line x1="516" y1="95" x2="539" y2="95"/>
+    <line x1="693" y1="95" x2="716" y2="95"/>
+  </g>
+</svg>
